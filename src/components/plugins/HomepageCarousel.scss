@@ -1,0 +1,67 @@
+.carousel ul {
+    padding-inline-start: unset;
+}
+
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid #ffffff;
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-right: 8px solid #ffffff;
+}
+
+.carousel .slide .legend {
+    bottom: 10%;
+    transform: translateX(-50%);
+    left: 50%;
+    margin-left: unset;
+    padding: 5px;
+    width:75%;
+    background: #272727;
+    letter-spacing: 4px;
+    font-weight: 100;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.carousel.carousel-slider .control-arrow{
+    height: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    background: #f29fc6;
+    border-radius: 50px;
+    margin-top: unset;
+}
+
+.carousel .control-arrow {
+    background: #f29fc6;
+    border-radius: 50px;
+    padding: 1px 5px;
+}
+
+.carousel .control-next.control-arrow:before,
+.carousel .control-prev.control-arrow:before {
+    vertical-align: center;
+    display: flex;
+    margin: 0;
+    padding: 0px;
+}
+
+.carousel-slider .control-prev.control-arrow {
+left: 1%;
+}
+.carousel-slider .control-next.control-arrow {
+    right: 1%;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+    background: #f29fc6;
+    opacity: 1.0;
+}
+
+
+.carousel .thumbs {
+    // display: flex;
+    // justify-content: center;
+}
