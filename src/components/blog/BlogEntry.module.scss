@@ -1,0 +1,38 @@
+.blogentry {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 1rem;
+}
+
+.blogentry__imgFill{
+    width: 100%;
+    padding-bottom: 100%;
+}
+.blogentry__img {
+  width: 20%;
+  position: relative;
+}
+
+.blogentry__img img{
+width: 100%;
+height:100%;
+object-fit: cover;
+position: absolute;
+left: 0;
+top: 0;
+}
+
+.blogentry__copy {
+  width: 80%;
+  font-family: 'Poppins', sans-serif;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.blogentry__copy h1,
+.blogentry__copy h2,
+.blogentry__copy h3 {
+    font-family: Playfair Display;
+    margin: 0 0 1rem;
+  }

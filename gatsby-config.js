@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Journal of Z`,
+    description: `Journal of Z | Travel, Lifestyle And The Pursuit Of Medical School`,
+    author: `Zaya Jones`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,6 +19,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
+        // name: `Journal of Z`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
