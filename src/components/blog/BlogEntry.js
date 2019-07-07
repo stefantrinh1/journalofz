@@ -1,6 +1,6 @@
 import React from "react";
-// import DateFormat from "dateformat";
-import BlogEntryCSS from "./BlogEntry.module.scss"
+import DateFormat from "dateformat";
+import EntryCSS from "./BlogEntry.module.sEntryCSS"
 
 class BlogEntry extends React.Component {
     constructor(props) {
@@ -13,17 +13,17 @@ class BlogEntry extends React.Component {
     render() {
         return (
 
-            <div className={BlogEntryCSS.blogentry}>
-                <div className={BlogEntryCSS.blogentry__img}>
-                    <div className={BlogEntryCSS.blogentry__imgFill}></div>
+            <div className={EntryCSS.blogentry}>
+                <div className={EntryCSS.entryimg}>
+                    <div className={EntryCSS.imgFill}></div>
                     <img src={this.props.entry.fields.blogMainImage.fields.file.url} alt={this.props.entry.fields.title} />
                 </div>
-                <div className={BlogEntryCSS.blogentry__copy}>
+                <div className={EntryCSS.entrycopy}>
                     <h3>{this.props.entry.fields.title}</h3>
-                    <span>{this.props.entry.fields.datePublished} |
+                    <span className={EntryCSS.entrydate}>{this.props.entry.fields.datePublished}</span>
                     {this.props.entry.fields.categories.map(element => {
-                        return (<span>{element}</span>)
-                    })}</span>
+                        return (<span className={EntryCSS.entrycategory}>{element}</span>)
+                    })}
                     <p>{this.props.entry.fields.description}</p>
                 </div>
             </div>

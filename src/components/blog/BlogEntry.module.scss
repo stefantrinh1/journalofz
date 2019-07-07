@@ -5,16 +5,27 @@
   margin: 1rem;
 }
 
-.blogentry__imgFill{
+.entrydate {
+    margin-right: 0.5rem;
+}
+
+.entrycategory{
+    color: #f29fc6;
+    font-weight: bold;
+    margin: 0 0.25rem;
+}
+
+
+.imgFill{
     width: 100%;
     padding-bottom: 100%;
 }
-.blogentry__img {
+.entryimg {
   width: 20%;
   position: relative;
 }
 
-.blogentry__img img{
+.entryimg img{
 width: 100%;
 height:100%;
 object-fit: cover;
@@ -23,16 +34,16 @@ left: 0;
 top: 0;
 }
 
-.blogentry__copy {
+.entrycopy {
   width: 80%;
   font-family: 'Poppins', sans-serif;
   padding: 0 1rem;
   box-sizing: border-box;
 }
 
-.blogentry__copy h1,
-.blogentry__copy h2,
-.blogentry__copy h3 {
+.copy h1,
+.copy h2,
+.copy h3 {
     font-family: Playfair Display;
     margin: 0 0 1rem;
   }
