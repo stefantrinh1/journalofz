@@ -20,7 +20,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-responsive-carousel": "^3.1.49"
+    "react-responsive-carousel": "^3.1.49",
+    "source-map-explorer": "^2.0.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
@@ -30,6 +31,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",

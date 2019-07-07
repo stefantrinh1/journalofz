@@ -16,7 +16,10 @@ class InstagramFeed extends React.Component {
             isLoading: true
         })
 
-        fetch('https://api.instagram.com/v1/users/self/media/recent/?=&access_token=2116304243.0917c89.a0bcdda6581d476bb24e31fcf5154f18')
+        const instagramQuery = "https://api.instagram.com/v1/users/self/media/recent/?=&access_token="
+        const accessToken = "54328625.1677ed0.79fea6deb9ca4e62accebb6a54643e43"
+
+        fetch(`${instagramQuery+accessToken}`)
             .then(response => response.json())
             .then(data =>
                 this.setState({
