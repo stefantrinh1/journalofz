@@ -1,6 +1,6 @@
 import React from "react";
 import DateFormat from "dateformat";
-import EntryCSS from "./BlogEntry.module.sEntryCSS"
+import EntryCSS from "./BlogEntry.module.scss"
 
 class BlogEntry extends React.Component {
     constructor(props) {
