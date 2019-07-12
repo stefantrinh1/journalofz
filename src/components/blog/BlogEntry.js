@@ -1,5 +1,6 @@
 import React from "react";
 import DateFormat from "dateformat";
+import {Link} from "gatsby";
 import EntryCSS from "./BlogEntry.module.scss"
 
 class BlogEntry extends React.Component {
@@ -25,7 +26,11 @@ class BlogEntry extends React.Component {
                         return (<span className={EntryCSS.entrycategory}>{element}</span>)
                     })}
                     <p>{this.props.entry.fields.description}</p>
+                    
+                    <Link to="/"><button className={EntryCSS.readmorebutton}>Read More</button></Link>
+                    
                 </div>
+
             </div>
         )
     }

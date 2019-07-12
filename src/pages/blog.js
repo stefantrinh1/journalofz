@@ -58,13 +58,13 @@ class BlogHome extends React.Component {
       return (
         <Layout>
           <SEO title="Blog" />
-
+          <div style={{maxWidth:'800px', margin: '0 auto'}}>
           <h1 style={{textAlign:'center'}}>
             The Blog
           </h1>
           <hr/>
-
           {BlogList}
+          </div>
         </Layout>
       )
     }

@@ -32,19 +32,6 @@ class InstagramFeed extends React.Component {
 
     }
 
-    componentDidUpdate() {
-        console.log("component updated")
-
-    }
-
-    componentWillUpdate() {
-
-    }
-
-
-
-
-
     render() {
         const { isLoading, error } = this.state
         let InstagramJsonData = this.state.instagramJson.data
