@@ -13,7 +13,7 @@ const BlogEntry = (props) => (
                     <h3>{props.entry.fields.title}</h3>
                     <span className={EntryCSS.entrydate}>{props.entry.fields.datePublished}</span>
                     {props.entry.fields.categories.map(element => {
-                        return (<span className={EntryCSS.entrycategory}>{element}</span>)
+                        return (<span key={element+1} className={EntryCSS.entrycategory}>{element}</span>)
                     })}
                     <p>{props.entry.fields.description}</p>
                     

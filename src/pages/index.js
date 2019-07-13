@@ -2,8 +2,10 @@ import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import * as contentful from "contentful";
-import HomepageCarousel from "../components/plugins/HomepageCarousel"
-import LoadingPage from "../components/plugins/LoadingPage";
+import HomepageCarousel from "../components/HomepageCarousel/HomepageCarousel";
+import LoadingPage from "../components/LoadingPage/LoadingPage";
+import InstagramFeed from "../components/Instagram/InstagramFeed"
+import "../pagestyles/homepage.scss"
 
 
 class IndexPage extends React.Component {
@@ -14,12 +16,13 @@ class IndexPage extends React.Component {
     "CarouselJSON": [],
   }
 
+  // Contentful Client to access the Api
   client = contentful.createClient({
     space: 'z41rwa3gfxym',
     accessToken: 'V9pTuf1KvaHDpf86kp5tHEJQyKOrHjHEgCAu0NSHwTg'
   })
 
-  // 
+  //Contentful Queries 
   CarouselQuery = {
     content_type: "homepageCarousel",
   }
@@ -48,9 +51,12 @@ class IndexPage extends React.Component {
     if (!this.state.isCarouselLoading) {
       return (
         <Layout>
+          <div className="homepage">
           <SEO title="Home" />
           {console.log(this.state.CarouselJSON)}
-          <HomepageCarousel images={this.state.CarouselJSON} />
+          <HomepageCarousel images={this.state.CarouselJSON}/>
+          <InstagramFeed NumberPhotosToLoad={6}/>
+          </div>
         </Layout>
       )
     }

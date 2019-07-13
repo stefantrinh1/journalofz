@@ -1,10 +1,10 @@
-import React from "react"
+import React from "react";import LoadingPage from "../components/LoadingPage/LoadingPage";
 // import { Link } from "gatsby"
-import Layout from "../components/layout"
-import LoadingPage from "../components/plugins/LoadingPage"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+// import LoadingPage from "../components/LoadingPage/LoadingPage";
+import SEO from "../components/seo";
 import * as contentful from "contentful";
-import BlogEntry from "../components/blog/BlogEntry"
+import BlogEntry from "../components/blog/BlogEntry";
 
 class BlogHome extends React.Component {
 

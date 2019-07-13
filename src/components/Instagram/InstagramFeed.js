@@ -6,35 +6,38 @@ class InstagramFeed extends React.Component {
     state = {
         instagramJson: ["loading"],
         isLoading: true,
-        error: null
+        error: null,
+        NumberPhotosToLoad: this.props.NumberPhotosToLoad,
+        accessToken: this.props.accessToken
     }
 
     componentDidMount() {
         console.log("component did mount");
-
         this.setState({
             isLoading: true
         })
 
         const instagramQuery = "https://api.instagram.com/v1/users/self/media/recent/?=&access_token="
-        const accessToken = "54328625.1677ed0.79fea6deb9ca4e62accebb6a54643e43"
 
-        fetch(`${instagramQuery+accessToken}`)
+        fetch(`${instagramQuery+this.state.accessToken}`)
             .then(response => response.json())
-            .then(data =>
+            .then(data => {
+                const InstagramDataList = data.data.slice(0, this.state.NumberPhotosToLoad)
                 this.setState({
-                    instagramJson: data,
+                    instagramJson: InstagramDataList,
                     isLoading: false
                 })
                 // .catch(error => this.setState({ isLoading: false }))
-
+            }
             )
-
+    }
+    componentDidUpdate(){
+        console.log(this.state.NumberPhotosToLoad);
     }
 
     render() {
         const { isLoading, error } = this.state
-        let InstagramJsonData = this.state.instagramJson.data
+        let InstagramJsonData = this.state.instagramJson
         // console.log(this.state.isLoading)
 
 
@@ -115,9 +118,12 @@ class InstagramFeed extends React.Component {
             return (<div className="instagramApp">{instagramContent}</div>)
 
         }
-
-
     }
 }
+
+InstagramFeed.defaultProps = {
+    accessToken:"54328625.1677ed0.79fea6deb9ca4e62accebb6a54643e43",
+    NumberPhotosToLoad: 20,
+  };
 
 export default InstagramFeed

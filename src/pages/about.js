@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import LoadingPage from "../components/plugins/LoadingPage"
+import LoadingPage from "../components/LoadingPage/LoadingPage";
 import * as contentful from "contentful";
 const ReactMarkdown = require('react-markdown/with-html');
 import("./routestyles/about.scss");
