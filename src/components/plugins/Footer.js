@@ -3,12 +3,11 @@ import ("./Footer.scss")
 
 const Footer = () => (
         
-        
-        <footer>
-          © {new Date().getFullYear()},
-          {` `}
-          <a href="https://www.gatsbyjs.org">Journal of Z</a>
-        </footer>
+  <footer>
+    © {new Date().getFullYear()},
+    {` `}
+    <a href="https://www.gatsbyjs.org">Journal of Z</a>
+  </footer>
 
 )
 
