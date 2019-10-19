@@ -5,7 +5,6 @@ import Img from "gatsby-image";
 import SectionTitle from "./SectionTitle";
 import Styles from "./LatestBlog.module.scss";
 
-
 const LatestBlog = () => {
 
     const data = useStaticQuery(graphql`
