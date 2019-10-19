@@ -1,69 +1,29 @@
 import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import * as contentful from "contentful";
-import HomepageCarousel from "../components/HomepageCarousel/HomepageCarousel";
-import LoadingPage from "../components/LoadingPage/LoadingPage";
-import InstagramFeed from "../components/Instagram/InstagramFeed"
+import HomepageHeroHeader from '../components/Homepage/HomepageHeroHeader';
+import IntroContentBlock from '../components/Homepage/IntroContentBlock';
+import LatestBlog from "../components/Homepage/LatestBlog";
+import InstagramFeed from "../components/Instagram/InstagramFeed";
 import "../pagestyles/homepage.scss"
+
 
 
 class IndexPage extends React.Component {
 
-
-  state = {
-    isCarouselLoading: true,
-    "CarouselJSON": [],
-  }
-
-  // Contentful Client to access the Api
-  client = contentful.createClient({
-    space: 'z41rwa3gfxym',
-    accessToken: 'V9pTuf1KvaHDpf86kp5tHEJQyKOrHjHEgCAu0NSHwTg'
-  })
-
-  //Contentful Queries 
-  CarouselQuery = {
-    content_type: "homepageCarousel",
-  }
-
-  componentDidMount() {
-    // Functions to Fetch Data from Contentful
-    this.FetchByContentType(this.CarouselQuery).then(this.SetCarousel).catch(console.error)
-  }
-  componentDidUpdate() {
-    console.log(this.state.CarouselJSON)
-  }
-
-  // This is a Generic Fetch By ContentType Function for Contentful. It takes a query 
-  FetchByContentType = (query) => this.client.getEntries(query)
-
-  // Sets the response once it has come back into state for About Intro
-  SetCarousel = response => {
-    this.setState({
-      "CarouselJSON": response.items,
-      isCarouselLoading: false
-      
-    })
-  }
-
   render() {
-    if (!this.state.isCarouselLoading) {
-      return (
-        <Layout>
-          <div className="homepage">
+    return (
+      <Layout>
+        <div className="homepage">
           <SEO title="Home" />
-          {console.log(this.state.CarouselJSON)}
-          <HomepageCarousel images={this.state.CarouselJSON}/>
-          <InstagramFeed NumberPhotosToLoad={6}/>
-          </div>
-        </Layout>
-      )
-    }
-    else {
-      return (<LoadingPage />)
-    }
+          <HomepageHeroHeader />
+          <IntroContentBlock />
+          <LatestBlog />
+          <InstagramFeed NumberPhotosToLoad={8} loadUserData={false} className={"instaHomepageWidget"} />
+        </div>
+      </Layout>
+    )
   }
-
 }
+
 export default IndexPage

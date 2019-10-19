@@ -1,0 +1,35 @@
+.aboutContent {
+    max-width: 768px;
+    margin: auto;
+    padding: 1rem; 
+}
+
+.aboutHero {
+    position: relative;
+    overflow: hidden;
+}
+
+.aboutHero img{
+    height: 50vh;
+    object-fit: cover;
+}
+
+.aboutHeroCopy {
+    position: absolute;
+    top:50%;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6068802521008403) 100%);
+    opacity:0.7;
+    padding: 1rem;
+    width: 50vw;
+    z-index: 1; // fix forgatsby image brings the image ontop of copy 
+    transform: translate(0, -50%);
+}
+
+@media all and (min-width: 599px) {
+
+    .aboutHeroCopy {
+        width: 35vw;
+        font-size: calc(10px + 0.8vw);
+    }
+}

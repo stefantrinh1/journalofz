@@ -1,0 +1,20 @@
+@import "../../basestyles/colors.scss";
+
+.hero {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  background: rgb(255, 236, 245);
+  background: linear-gradient(
+    175deg,
+    rgb(254, 239, 246) 0%,
+    rgba(248, 203, 218, 0.836572) 33%,
+    #fff8fc 66%,
+    rgb(255, 246, 246) 100%
+  );
+}
+
+.heroCopy {
+  align-self: center;
+  text-align: center;
+}

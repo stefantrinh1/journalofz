@@ -1,0 +1,138 @@
+@import "../../basestyles/colors.scss";
+
+
+.latestBlog {
+  padding: 0 1rem;
+}
+
+.latestBlog p a:hover {
+  text-decoration: underline;
+}
+.latestBlog hr {
+  background: $primary;
+  margin: 1rem 25%;
+  border: $primary solid 1.5px;
+}
+
+.description {
+  color: $tertiary-text;
+}
+
+.category {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category span {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  font-weight: 100;
+  display: inline-block;
+  border: solid 0.5px black;
+  font-size: 0.75em;
+}
+
+.copySubContainer h2 {
+  margin-top: 0.5rem;
+  font-size:1.4em;
+}
+
+.copySubContainer button {
+  border: none;
+  background-color: unset;
+  padding: 0;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.copySubContainer button:hover {
+  text-decoration: underline;
+  transform: translateX(5px);
+  transition: all 0.5s ease-in-out;
+  color: $primary;
+}
+
+@media all and (min-width: 599px) {
+  .latestBlog {
+    display: flex;
+    padding: unset;
+    font-size: calc(8px + 0.8vw);
+  }
+
+  .latestBlog hr {
+    display: none;
+    background: lightgrey;
+    margin: 1rem 25%;
+    border: lightgrey solid 1.5px;
+  }
+
+  //   These CSS Selectors and styles alternate
+  //   the image and copy swaping each side.
+  .latestBlog:nth-child(odd) .imageContainer {
+    order: 2;
+    left: 0;
+  }
+  .latestBlog:nth-child(odd) .imageContainer .imageSubContainer {
+    left: -10%;
+    right: unset;
+  }
+  .latestBlog:nth-child(odd) .imageContainer .imageSubContainer img {
+    right: unset;
+  }
+
+  //===== Copy Block =====
+
+  .copyContainer {
+    order: 2;
+    width: 55%;
+    position: relative;
+  }
+
+  .copySubContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+  }
+
+  //===== Image Block =====
+
+  .imageContainer {
+    order: 1;
+    width: 45%;
+    background: rgb(255, 201, 201);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 201, 201, 1) 0%,
+      rgba(255, 219, 219, 1) 50%,
+      rgba(255, 236, 236, 1) 100%
+    );
+    position: relative;
+  }
+
+  //   the image is absoultely positioned taking
+  //   no space in the container
+  //   so the padding bottom 100% takes up the space
+  .imageFill {
+    padding-bottom: 100%;
+  }
+  .imageSubContainer {
+    position: relative;
+    top: 50%;
+    transform: translate(0%, -50%);
+    right: -10%;
+  }
+  .imageContainer img {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    right: 0;
+    object-fit: cover;
+    height: 75%;
+    width: 80%;
+    border: white 6px solid;
+    box-shadow: 5px 6px 9px grey;
+  }
+}

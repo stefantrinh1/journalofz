@@ -11,21 +11,45 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
+
+  // this grabs the general info and meta data from contentful
+  const site  = useStaticQuery(graphql`
+  {
+    allContentfulGeneralInformation {
+      nodes {
+        id
+        siteTitle
+        siteSubtitle
+        siteMetaDescription
+        authorOfSite
+        baseLocation
+        profilePicture {
+          fluid (maxWidth:100) {
+            srcSet
           }
         }
       }
-    `
+    }
+  }   
+  `
+
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  // this query is used to take from gatsby config file.
+  // could not implement dynamic data so brought query to SEO
+//   graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         title
+//         description
+//         author
+//       }
+//     }
+//   }
+// `
+
+  const metaDescription = description || site.allContentfulGeneralInformation.nodes[0].siteMetaDescription
 
   return (
     <Helmet
@@ -33,7 +57,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.description} `}
+      titleTemplate={`%s | ${site.allContentfulGeneralInformation.nodes[0].siteMetaDescription} `}
       meta={[
         {
           name: `description`,
@@ -57,7 +81,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.allContentfulGeneralInformation.nodes[0].authorOfSite,
         },
         {
           name: `twitter:title`,

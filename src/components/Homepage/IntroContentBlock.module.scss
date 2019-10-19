@@ -1,0 +1,45 @@
+@import "../../basestyles/colors.scss";
+
+.intro {
+    padding: 1.5vw;
+}
+
+.introBlocks {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.introBlocks div {
+    width: 100%;
+    padding: 1%;
+    text-align: center;
+}
+
+.introContentImage {
+    max-width: 100px;
+}
+
+.introBlocks h2 {
+    font-size: 1.4em;
+}
+
+.introBlocks p {
+    color: $tertiary-text;
+    line-height: 1.4;
+    font-size:1em;
+}
+
+
+@media all and (min-width: 599px) {
+    .intro{
+        font-size: calc(8px + 0.8vw);
+    }
+    .introBlocks {
+        flex-wrap: nowrap;
+    }
+    .introBlocks div {
+        padding: 3%;
+    }
+    
+    
+}
