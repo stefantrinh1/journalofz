@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby"
 import Styles from "./HeroHeader.module.scss";
 
 
@@ -18,5 +17,9 @@ const HeroHeader = (props) => {
   HeroHeader.defaultProps = {
     pageTitle: 'Page Title'
 };
+
+HeroHeader.propTypes = {
+  pageTitle: PropTypes.string
+}
   
   export default HeroHeader

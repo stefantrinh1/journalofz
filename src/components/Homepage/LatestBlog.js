@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import SectionTitle from "./SectionTitle";
 import Styles from "./LatestBlog.module.scss";
 
-const LatestBlog = () => {
+const LatestBlog = (props) => {
 
     const data = useStaticQuery(graphql`
     {
@@ -13,6 +13,7 @@ const LatestBlog = () => {
         edges {
             node {
                 id
+                slug
                 title
                 description {
                     description
@@ -20,7 +21,7 @@ const LatestBlog = () => {
                 updatedAt (fromNow:true)
                 categories
                 blogMainImage {
-                    fluid{
+                    fluid (maxWidth:1500) {
                         ...GatsbyContentfulFluid
                     }
                 }
@@ -33,15 +34,14 @@ const LatestBlog = () => {
         }
       }
     }
-    `
-    )
+    `)
 
     return (
         <section className={Styles.blogList}>
 
-            <SectionTitle title="What's New" textAlign="center"/>
+           <SectionTitle title="What's New" textAlign="center" />
 
-            {
+          {
                 data.allContentfulBlogPosts.edges.map((blog) => (
 
                     <section key={blog.node.id} className={Styles.latestBlog}>
@@ -59,24 +59,31 @@ const LatestBlog = () => {
                                 </div>
 
                                 <p>
-                                    <i>By <b><Link to='/about'>Journal of Z</Link></b></i> | {blog.node.updatedAt} | {`${blog.node.blogContent.childMarkdownRemark.timeToRead} Min Read`} 
-                                    </p>
+                                    <i>By <b><Link to='/about'>Journal of Z</Link></b></i> 
+                                    <span className={Styles.interpunct}>·</span> 
+                                    {blog.node.updatedAt} 
+                                    <span className={Styles.interpunct}>·</span> 
+                                    {`${blog.node.blogContent.childMarkdownRemark.timeToRead} Min Read`}
+                                </p>
 
                                 <p className={Styles.description}>
                                     {`${blog.node.description.description.substr(0, 100)}...`}
                                 </p>
-                                <button>Find Out More ></button>
+                                
+                                <Link to={`/blog/${blog.node.slug}`}><button>Find Out More ></button></Link>
                             </div>
                         </div>
                         <div className={Styles.imageContainer}>
 
                             <div className={Styles.imageSubContainer}>
-                                <div className={Styles.imageFill} />
-                                <img
+                                {/* <div className={Styles.imageFill} /> */}
+                                {/* <img
                                     srcSet={blog.node.blogMainImage.fluid.srcSet}
                                     alt={blog.node.blogMainImage.description}
-                                />
-                                
+                                /> */}
+
+                                <Img fluid={blog.node.blogMainImage.fluid} />
+
 
 
                             </div>
@@ -94,6 +101,10 @@ const LatestBlog = () => {
         </section>
     )
 }
+
+LatestBlog.defaultProps = {
+    numberBlogs: '3'
+};
 
 
 export default LatestBlog

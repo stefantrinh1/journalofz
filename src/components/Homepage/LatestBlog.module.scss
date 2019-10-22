@@ -10,8 +10,8 @@
 }
 .latestBlog hr {
   background: $primary;
-  margin: 1rem 25%;
-  border: $primary solid 1.5px;
+  margin: 2em 25%;
+  border: $primary solid 1px;
 }
 
 .description {
@@ -34,6 +34,12 @@
   font-size: 0.75em;
 }
 
+.interpunct {
+  padding: 0 10px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
 .copySubContainer h2 {
   margin-top: 0.5rem;
   font-size:1.4em;
@@ -41,16 +47,21 @@
 
 .copySubContainer button {
   border: none;
-  background-color: unset;
+  background-color: black;
   padding: 0;
+  color: white;
+  padding: 1rem 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  transition: all 0.5s ease-in-out;
 }
 .copySubContainer button:hover {
   text-decoration: underline;
-  transform: translateX(5px);
-  transition: all 0.5s ease-in-out;
-  color: $primary;
+  transform: translateX(1.5px);
+  opacity: 0.7;
+}
+.imageSubContainer div div:nth-child(1) {
+  padding-bottom: 75% !important;
 }
 
 @media all and (min-width: 599px) {
@@ -123,16 +134,22 @@
     top: 50%;
     transform: translate(0%, -50%);
     right: -10%;
+    padding: 10% 0;
   }
-  .imageContainer img {
-    position: absolute;
-    top: 50%;
-    transform: translate(0%, -50%);
-    right: 0;
-    object-fit: cover;
-    height: 75%;
-    width: 80%;
-    border: white 6px solid;
-    box-shadow: 5px 6px 9px grey;
+
+  .imageSubContainer div div:nth-child(1) {
+    padding-bottom: 100% !important;
   }
+
+  // .imageContainer img {
+  //   position: absolute;
+  //   top: 50%;
+  //   transform: translate(0%, -50%);
+  //   right: 0;
+  //   object-fit: cover;
+  //   height: 75%;
+  //   width: 80%;
+  //   border: white 6px solid;
+  //   box-shadow: 5px 6px 9px grey;
+  // }
 }

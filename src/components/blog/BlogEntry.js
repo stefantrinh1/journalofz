@@ -1,5 +1,4 @@
 import React from "react";
-import DateFormat from "dateformat";
 import {Link} from "gatsby";
 import EntryCSS from "./BlogEntry.module.scss"
 

@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Img from 'gatsby-image';
-import HeroHeader from "../components/HeroHeader/HeroHeader";
 import Styles from '../pagestyles/about.module.scss';
 
 const About = () => {
@@ -22,7 +21,7 @@ const About = () => {
                 }
             }
             aboutPageImage {
-              fluid(maxWidth: 2500, maxHeight: 1500) {
+              fluid(maxWidth: 2500, maxHeight: 1400) {
                ...GatsbyContentfulFluid
               }
             }
@@ -34,7 +33,7 @@ const About = () => {
     return (
 
         <Layout>
-            <SEO title={data.contentfulAboutPage.aboutMetaTitle} description={data.contentfulAboutPage.aboutMetaDescription} lang="en" meta="blogger, future doctor, medical school, life problems, travel the world" />
+            <SEO title={data.contentfulAboutPage.aboutMetaTitle} description={data.contentfulAboutPage.aboutMetaDescription} lang="en" />
             <div className={Styles.aboutHero}>
                 <div className={Styles.aboutHeroCopy}>
                     <h1>

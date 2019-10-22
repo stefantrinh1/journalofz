@@ -1,6 +1,5 @@
 import React from 'react';
 import Styles from "./InstagramFeed.module.scss"
-const ReactMarkdown = require('react-markdown/with-html');
 
 class InstagramFeed extends React.Component {
 

@@ -50,17 +50,19 @@ class Navigation extends React.Component {
   // Handles the Clicks
   HandleNavAction(event) {
 
-    const navElement = document.querySelector(`.${Styles.nav}`);
+
+    // const navElement = document.querySelector(`.${Styles.nav}`);
     const navLink = document.querySelectorAll(`.${Styles.navItem}`);
 
-    const outsideClickListener = (event) => {
-      if (!navElement.contains(event.target)) {
-        removeEventListener()
-        this.CloseNav();
-      }
-    }
+    // const outsideClickListener = (event) => {
+    //   if (!navElement.contains(event.target)) {
+    //     removeEventListener()
+    //     this.CloseNav();
+    //   }
+    // }
 
     // if the Nav-Links are clicked the follow function runs
+
     const navClickListener = (event) => {
       navLink.forEach(element => {
         if (element.contains(event.target)) {
@@ -122,7 +124,7 @@ class Navigation extends React.Component {
           }
         </div>
 
-  
+
 
         {/* Nav Links if Nav Opened */}
         {this.state.navigationOpen ?

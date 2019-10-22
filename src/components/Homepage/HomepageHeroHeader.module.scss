@@ -3,7 +3,7 @@
 .hero {
   width: 100%;
   display: flex;
-  padding: 0 0 2.5%;
+  // padding: 0 0 2.5%;
   min-height: 70vh;
   background: rgb(255, 236, 245);
   background: linear-gradient(169deg, rgba(255,198,223,1) 0%, rgba(255,217,230,0.8365721288515406) 33%, rgba(255,233,245,1) 66%, rgba(255,255,255,1) 100%);
@@ -16,6 +16,10 @@
 
 .hero h2 {
   text-align: center;
+}
+
+.hero div:nth-child(2){
+  display: none;
 }
 
 .heroCopy {
@@ -49,16 +53,16 @@
 }
 
 .heroCopy .btn1 {
-  border: solid 1px $primary-text;
-  background: none;
-  color: $primary-text;
-}
-
-.heroCopy .btn2 {
   background: $primary;
   color: white;
   box-shadow: none;
   border: none;
+}
+
+.heroCopy .btn2 {
+  border: solid 1px $primary-text;
+  background: none;
+  color: $primary-text;
 }
 
 @media all and (min-width: 599px) {
@@ -68,12 +72,20 @@
     min-height: unset;
   }
 
+  .hero div:nth-child(2){
+    width: 40%;
+    display: block;
+    overflow: visible !important;
+    top: calc(-55px + -2vw) !important;
+  }
+
   .hero img {
     display: block;
     min-height: unset;
-     z-index: 10;
-     position: relative;
-     top: calc(-55px + -2vw);
+    height:100%;
+    z-index: 10;
+    opacity: 1 !important;
+
   }
 
   .heroCopy {
