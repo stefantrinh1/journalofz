@@ -76,15 +76,8 @@ const LatestBlog = (props) => {
                         <div className={Styles.imageContainer}>
 
                             <div className={Styles.imageSubContainer}>
-                                {/* <div className={Styles.imageFill} /> */}
-                                {/* <img
-                                    srcSet={blog.node.blogMainImage.fluid.srcSet}
-                                    alt={blog.node.blogMainImage.description}
-                                /> */}
 
                                 <Img fluid={blog.node.blogMainImage.fluid} />
-
-
 
                             </div>
 
