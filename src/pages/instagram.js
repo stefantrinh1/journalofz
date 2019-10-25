@@ -9,7 +9,7 @@ const InstagramPage = () => (
     <Layout>
         <SEO title="Blog" />
         <div className="instagramApp">
-            <InstagramFeed NumberPhotosToLoad={20}/>
+            <InstagramFeed NumberPhotosToLoad={20} loadUserData={true}/>
         </div>
     </Layout>
 

@@ -2,10 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem;
   box-sizing: border-box;
-  border-bottom: 0.5px solid lightgrey;
-  margin-bottom: 1em;
+  margin: 2em 0;
 }
 
 .entrydate {
@@ -21,13 +20,25 @@
 .imgFill {
   display: none;
 }
-.entryimg {
+.entryImg {
   width: 100%;
   position: relative;
 }
 
-.entryimg img {
+.entryImg img {
   width: 100%;
+  transition: all ease-in-out 1.5s !important;
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.entryImg div {
+  height: 100%;
+}
+
+.entryImg div div:nth-child(1) {
+  padding-bottom: 75% !important;
 }
 
 .entrycopy {
@@ -74,8 +85,8 @@
     }
 }
 
-@media (min-width: 480px) {
-  .entryimg {
+@media (min-width: 599px) {
+  .entryImg {
     width: 30%;
   }
   .imgFill {
@@ -87,7 +98,7 @@
     width: 70%;
   }
 
-  .entryimg img {
+  .entryImg img {
     width: 100%;
     object-fit: cover;
     position: absolute;

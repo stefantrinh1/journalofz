@@ -39,9 +39,9 @@ const LatestBlog = (props) => {
     return (
         <section className={Styles.blogList}>
 
-           <SectionTitle title="What's New" textAlign="center" />
+            <SectionTitle title="What's New" textAlign="center" />
 
-          {
+            {
                 data.allContentfulBlogPosts.edges.map((blog) => (
 
                     <section key={blog.node.id} className={Styles.latestBlog}>
@@ -59,26 +59,26 @@ const LatestBlog = (props) => {
                                 </div>
 
                                 <p>
-                                    <i>By <b><Link to='/about'>Journal of Z</Link></b></i> 
-                                    <span className={Styles.interpunct}>·</span> 
-                                    {blog.node.updatedAt} 
-                                    <span className={Styles.interpunct}>·</span> 
+                                    <i>By <b><Link to='/about'>Journal of Z</Link></b></i>
+                                    <span className={Styles.interpunct}>·</span>
+                                    {blog.node.updatedAt}
+                                    <span className={Styles.interpunct}>·</span>
                                     {`${blog.node.blogContent.childMarkdownRemark.timeToRead} Min Read`}
                                 </p>
 
                                 <p className={Styles.description}>
                                     {`${blog.node.description.description.substr(0, 100)}...`}
                                 </p>
-                                
+
                                 <Link to={`/blog/${blog.node.slug}`}><button>Find Out More ></button></Link>
                             </div>
                         </div>
                         <div className={Styles.imageContainer}>
 
                             <div className={Styles.imageSubContainer}>
-
-                                <Img fluid={blog.node.blogMainImage.fluid} />
-
+                                <Link to={`/blog/${blog.node.slug}`}>
+                                    <Img fluid={blog.node.blogMainImage.fluid} />
+                                </Link>
                             </div>
 
                         </div>

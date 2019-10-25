@@ -1,25 +1,34 @@
 import React from "react";
-import {Link} from "gatsby";
-import EntryCSS from "./BlogEntry.module.scss"
+import { Link } from "gatsby";
+import Img from "gatsby-image";
+import EntryCSS from "./BlogEntry.module.scss";
 
-const BlogEntry = (props) => (
-            <div className={EntryCSS.blogentry}>
-                <div className={EntryCSS.entryimg}>
-                    <div className={EntryCSS.imgFill}></div>
-                    <img src={props.entry.fields.blogMainImage.fields.file.url} alt={props.entry.fields.title} />
-                </div>
-                <div className={EntryCSS.entrycopy}>
-                    <h3>{props.entry.fields.title}</h3>
-                    <span className={EntryCSS.entrydate}>{props.entry.fields.datePublished}</span>
-                    {props.entry.fields.categories.map(element => {
-                        return (<span key={element+1} className={EntryCSS.entrycategory}>{element}</span>)
-                    })}
-                    <p>{props.entry.fields.description}</p>
-                    
-                    <Link to="/"><button className={EntryCSS.readmorebutton}>Read More</button></Link>
-                    
-                </div>
+const BlogEntry = (props) => {
+
+
+
+    return (
+
+        <div className={EntryCSS.blogentry}>
+            <div className={EntryCSS.entryImg}>
+                <Link to={`/blog/${props.entry.node.slug}`}>
+                    <Img fluid={props.entry.node.blogMainImage.fluid} alt={props.entry.node.blogMainImage.description} />
+                </Link>
+            </div>
+            <div className={EntryCSS.entrycopy}>
+                <h3>{props.entry.node.title}</h3>
+                <span className={EntryCSS.entrydate}>{props.entry.node.updatedAt}</span>
+                {props.entry.node.categories.map(element => {
+                    return (<span key={element + 1} className={EntryCSS.entrycategory}> · {element}</span>)
+                })}
+                <p>{`${props.entry.node.description.description.substr(0, 200)}...`}</p>
+
+                <Link to={`/blog/${props.entry.node.slug}`}><button className={EntryCSS.readmorebutton}>Read More</button></Link>
 
             </div>
-        )
+
+        </div>
+    )
+}
+
 export default BlogEntry;

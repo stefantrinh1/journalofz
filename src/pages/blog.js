@@ -1,75 +1,94 @@
-import React from "react";import LoadingPage from "../components/LoadingPage/LoadingPage";
-// import { Link } from "gatsby"
+import React from "react";
 import Layout from "../components/layout";
-// import LoadingPage from "../components/LoadingPage/LoadingPage";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from 'gatsby-image';
 import SEO from "../components/seo";
-import * as contentful from "contentful";
 import BlogEntry from "../components/blog/BlogEntry";
+import Styles from '../pagestyles/blog.module.scss'
+const BlogHome = () => {
 
-class BlogHome extends React.Component {
-
-  state = {
-    isBlogsLoading: true,
-    "blogsJSON": [],
-  }
-
-  client = contentful.createClient({
-    space: 'z41rwa3gfxym',
-    accessToken: 'V9pTuf1KvaHDpf86kp5tHEJQyKOrHjHEgCAu0NSHwTg'
-  })
-
-  // 
-  BlogsQuery = {
-    content_type: "blogPosts",
-  }
-
-  componentDidMount() {
-    // Functions to Fetch Data from Contentful
-    this.FetchByContentType(this.BlogsQuery).then(this.SetBlogsContent).catch(console.error)
-  }
-  componentDidUpdate() {
-    console.log(this.state.blogsJSON)
-  }
-
-  // This is a Generic Fetch By ContentType Function for Contentful. It takes a query 
-  FetchByContentType = (query) => this.client.getEntries(query)
-
-  // Sets the response once it has come back into state for About Intro
-  SetBlogsContent = response => {
-    this.setState({
-      isBlogsLoading: false,
-      "blogsJSON": response.items
-    })
-  }
-
-
-  render() {
-
-
-    if (!this.state.isBlogsLoading) {
-      // loops over the list of Objects from the JSON 
-      let BlogList = this.state.blogsJSON.map((entry) => {
-        return (
-          <div key={entry.sys.id}>
-            <BlogEntry entry={entry} />
-          </div>
-        )
-      })
-      return (
-        <Layout>
-          <SEO title="Blog" />
-          <div style={{maxWidth:'800px', margin: '0 auto'}}>
-          <h1 style={{textAlign:'center'}}>
-            The Blog
-          </h1>
-          <hr/>
-          {BlogList}
-          </div>
-        </Layout>
-      )
+  let blogPageContent = useStaticQuery(graphql`
+  {
+    allContentfulBlogPosts {
+      edges {
+        node {
+          id
+          slug
+          title
+          categories
+          datePublished(fromNow: true)
+          blogMainImage {
+            fluid(maxWidth: 768) {
+              ...GatsbyContentfulFluid
+            }
+            description
+          }
+          description {
+            description
+          }
+          blogContent {
+            childMarkdownRemark {
+              html
+              timeToRead
+            }
+          }
+          updatedAt(fromNow: true)
+        }
+      }
     }
-    else { return (<LoadingPage />) }
+  
+    allContentfulBlogMenu {
+      edges {
+        node {
+          id
+          blogMenuTitle
+          blogMenuSubtitle
+          blogMenuHeaderImage {
+            fluid(maxWidth: 2500, maxHeight: 1250) {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
   }
+  
+  `
+  )
+
+  // Shortend the Header Query for more Readable JSX
+  const blogPageHeader = blogPageContent.allContentfulBlogMenu.edges[0].node
+
+  return (
+
+    <Layout>
+      <SEO title="Blog" />
+      <section className={Styles.blogHome}>
+
+        <div className={Styles.blogHeader}>
+          <Img fluid={blogPageHeader.blogMenuHeaderImage.fluid} alt="" />
+          <div className={Styles.blogHeaderCopy}>
+            <h1>
+              {blogPageHeader.blogMenuTitle}
+            </h1>
+            <p>{blogPageHeader.blogMenuSubtitle}</p>
+          </div>
+        </div>
+
+        <div className={Styles.blogList}>
+          {blogPageContent.allContentfulBlogPosts.edges.map((entry) => {
+            return (
+              <div key={entry.node.id}>
+                <BlogEntry entry={entry} />
+              </div>
+            )
+          })}
+
+        </div>
+      </section>
+    </Layout>
+  )
+
 }
 
 export default BlogHome

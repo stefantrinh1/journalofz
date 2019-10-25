@@ -29,9 +29,9 @@ class InstagramFeed extends React.Component {
                     instagramJson: InstagramDataList,
                     isLoading: false
                 })
-                // .catch(error => this.setState({ isLoading: false }))
             }
             )
+            .catch(error => this.setState({ isLoading: false, error: true, }))
 
         fetch(`${instagramUserQuery + this.state.accessToken}`)
             .then(response => response.json())
@@ -40,19 +40,19 @@ class InstagramFeed extends React.Component {
                     instagramUserJson: data,
                     isUserDataLoading: false
                 })
-                // .catch(error => this.setState({ isLoading: false }))
             }
             )
+            .catch(error => this.setState({ isLoading: false, error: true, }))
     }
     componentDidUpdate() {
     }
 
     render() {
 
-        const { isLoading, error } = this.state
+        const { isLoading, isUserDataLoading, error } = this.state
         let InstagramJsonData = this.state.instagramJson
 
-        if (isLoading) {
+        if (isLoading || isUserDataLoading) {
             return (
                 <div className={Styles.loadingScreen}>
                     <div className={Styles.LoadingWidgetContainer}>
@@ -66,10 +66,7 @@ class InstagramFeed extends React.Component {
         if (error) {
             return (
                 <div>
-                    <p>
-                        Loading Error. Please Try Again Later.
-
-                    </p>
+                    {console.log("Error Loading Instagram Widget")}
                 </div>)
         }
         else {
@@ -89,7 +86,7 @@ class InstagramFeed extends React.Component {
                         />
                         <div className={Styles.imageStats}>
                             <span>
-                                <svg width="14px" height="14px" viewBox="0 0 788 726" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns="true" xlink="http://www.w3.org/1999/xlink">
+                                <svg width="14px" height="14px" viewBox="0 0 788 726" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns="true" xlink="http://www.w3.org/1999/xlink" name="likes">
                                     <g id="Blog" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                         <g id="Artboard" transform="translate(-264.000000, -164.000000)" fill="#FFFFFF">
                                             <g id="Group" transform="translate(657.500000, 400.500000) rotate(315.000000) translate(-657.500000, -400.500000) translate(313.000000, 51.000000)">
@@ -105,7 +102,7 @@ class InstagramFeed extends React.Component {
                             </span>
                             <span>
 
-                                <svg width="18px" height="14px" viewBox="0 0 1006 714" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns="true" xlink="http://www.w3.org/1999/xlink">
+                                <svg width="18px" height="14px" viewBox="0 0 1006 714" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns="true" xlink="http://www.w3.org/1999/xlink" name="comments">
                                     <g id="Blog" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                         <g id="Artboard" transform="translate(-196.000000, -167.000000)" fill="#FFFFFF">
                                             <g id="Group" transform="translate(98.000000, 167.000000)">
@@ -126,31 +123,34 @@ class InstagramFeed extends React.Component {
             const instagramUserData = this.state.instagramUserJson.data
 
             return (
-                <div className={`${Styles.instagramApp} ${this.props.className}`}>
-                    { this.props.loadUserData ? 
-                    <div className={Styles.instagramUserData}>
-                        <div className={Styles.instagram__profilepicturecontainer}>
-                            <a href={`https://www.instagram.com/${instagramUserData.username}`}><img className={Styles.instagram__profilepicture} src={instagramUserData.profile_picture} alt="profile pictures" /></a>
-                        </div>
-                        <div className={Styles.instagram__content}>
-                            <h2 className={Styles.instagram__username}>{instagramUserData.username}</h2>
 
-                            <div className={Styles.instagram__usercounts}>
-                                <p><strong>{instagramUserData.counts.media}</strong> Posts</p>
-                                <a href={`https://www.instagram.com/${instagramUserData.username}`}><p><strong>{instagramUserData.counts.followed_by}</strong> Followers</p></a>
-                                <a href={`https://www.instagram.com/${instagramUserData.username}`}><p><strong>{instagramUserData.counts.follows}</strong> Following</p></a>
+                <div className={`${Styles.instagramApp} ${this.props.className}`}>
+
+                    {this.props.loadUserData && !this.state.isUserDataLoading ?
+                        <div className={Styles.instagramUserData}>
+                            <div className={Styles.instagram__profilepicturecontainer}>
+                                <a href={`https://www.instagram.com/${instagramUserData.username}`}><img className={Styles.instagram__profilepicture} src={instagramUserData.profile_picture} alt="profile pictures" /></a>
                             </div>
-                            <p className={Styles.instagram__fullname}>{instagramUserData.full_name}</p>
-                            <p className={Styles.instagram__bio}>{instagramUserData.bio}</p>
-                            <p className={Styles.instagram__website}><a href={instagramUserData.website}>{instagramUserData.website}</a></p>
+                            <div className={Styles.instagram__content}>
+                                <h2 className={Styles.instagram__username}>{instagramUserData.username}</h2>
+
+                                <div className={Styles.instagram__usercounts}>
+                                    <p><strong>{instagramUserData.counts.media}</strong> Posts</p>
+                                    <a href={`https://www.instagram.com/${instagramUserData.username}`}><p><strong>{instagramUserData.counts.followed_by}</strong> Followers</p></a>
+                                    <a href={`https://www.instagram.com/${instagramUserData.username}`}><p><strong>{instagramUserData.counts.follows}</strong> Following</p></a>
+                                </div>
+                                <p className={Styles.instagram__fullname}>{instagramUserData.full_name}</p>
+                                <p className={Styles.instagram__bio}>{instagramUserData.bio}</p>
+                                <p className={Styles.instagram__website}><a href={instagramUserData.website}>{instagramUserData.website}</a></p>
+                            </div>
                         </div>
-                    </div>
-                    : null
+                        : null
                     }
 
                     {instagramContent}
 
-                </div>)
+                </div>
+            )
 
         }
     }
@@ -158,6 +158,7 @@ class InstagramFeed extends React.Component {
 
 InstagramFeed.defaultProps = {
     accessToken: "54328625.1677ed0.79fea6deb9ca4e62accebb6a54643e43",
+    // accessToken: "54328625.1677ed0.79fea6deb9ca4e62accebb6a54643e42",  // Error Testing access code 
     NumberPhotosToLoad: 20,
     className: "",
     loadUserData: true,

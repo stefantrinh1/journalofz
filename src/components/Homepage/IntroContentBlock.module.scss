@@ -20,8 +20,12 @@ max-width: 100px;
 margin: 0 auto;
 }
 
-.introContentImage {
-    max-width: 100px;
+.introBlocks img {
+    transition: all ease-in-out 2s;
+}
+
+.introBlocks img:hover {
+    transform: scaleX(-1);
 }
 
 .introBlocks h2 {

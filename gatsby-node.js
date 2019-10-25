@@ -21,12 +21,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               categories
               datePublished (fromNow: true)
               blogMainImage {
-                fluid (maxWidth:768) {
+                fluid (maxWidth:2500) {
                   srcSet
                 }
-            
+                description
               }
-              # description
+              description {
+                description
+              }
               blogContent {
                 childMarkdownRemark {
                   html
@@ -48,7 +50,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         return
     }
 
-    // Create pages for each markdown file.
+    // Create pages for each Contentful Post
     const blogTemplate = path.resolve(`src/components/blog/BlogTemplate.js`)
     result.data.allContentfulBlogPosts.edges.forEach(({ node }) => {
         
@@ -59,7 +61,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             // In your blog post template's graphql query, you can use path
             // as a GraphQL variable to query for data from the markdown file.
             context: {
-                node
+                slug: node.slug
             },
         })
     })

@@ -57,12 +57,21 @@
   color: white;
   box-shadow: none;
   border: none;
+  &:hover {
+    background: rgb(0, 0, 0);
+    color: white;
+  }
 }
 
 .heroCopy .btn2 {
   border: solid 1px $primary-text;
   background: none;
   color: $primary-text;
+  &:hover {
+    background: grey;
+    color: white;
+    border: white solid 1px;
+  }
 }
 
 @media all and (min-width: 599px) {
@@ -95,4 +104,5 @@
   .heroCopy button {
     padding: 2% 4%;
   }
+
 }

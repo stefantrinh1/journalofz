@@ -35,6 +35,7 @@ const About = () => {
         <Layout>
             <SEO title={data.contentfulAboutPage.aboutMetaTitle} description={data.contentfulAboutPage.aboutMetaDescription} lang="en" />
             <div className={Styles.aboutHero}>
+            <Img fluid={data.contentfulAboutPage.aboutPageImage.fluid} />
                 <div className={Styles.aboutHeroCopy}>
                     <h1>
                         {data.contentfulAboutPage.aboutTitle}
@@ -43,7 +44,6 @@ const About = () => {
                         {data.contentfulAboutPage.aboutSubtitle}
                     </p>
                 </div>
-                <Img fluid={data.contentfulAboutPage.aboutPageImage.fluid} />
 
             </div>
             <section className={Styles.aboutContent} dangerouslySetInnerHTML={{ __html: data.contentfulAboutPage.aboutContent.childMarkdownRemark.html }} />
