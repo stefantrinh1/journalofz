@@ -15,11 +15,16 @@ const HomepageHeroHeader = (props) => {
             {props.homepageContent.homepageHeroButton1}
           </button>
         </Link>
-        <Link to={props.homepageContent.homepageHeroButton2Link}>
+        {/* <Link to={props.homepageContent.homepageHeroButton2Link}>
           <button className={Styles.btn2}>
             {props.homepageContent.homepageHeroButton2}
           </button>
-        </Link>
+        </Link> */}
+          <a href="https://www.zayajones.com/">
+          <button className={Styles.btn2}>
+            {props.homepageContent.homepageHeroButton2}
+          </button>
+        </a>
       </div>
       <Img fluid={props.homepageContent.homepageHeroImage.fluid}/>
     </section>

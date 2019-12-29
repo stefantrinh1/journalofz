@@ -94,7 +94,7 @@ class Navigation extends React.Component {
       { label: 'HOME', link: "/" },
       { label: 'ABOUT', link: "/about" },
       { label: 'BLOG', link: "/blog" },
-      { label: 'PORTFOLIO', link: "/portfolio" },
+      // { label: 'PORTFOLIO', link: "/portfolio" },
       { label: 'INSTAGRAM', link: "/instagram" }
     ];
 
@@ -140,6 +140,11 @@ class Navigation extends React.Component {
                   </Link>
                 );
               })}
+              <a className={Styles.navItemLink} href="https://www.zayajones.com/">
+                <li className={Styles.navItem}>
+                  PORTFOLIO
+                </li>
+              </a>
             </ul>
 
           </div>
